@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #f6fafd;
+    margin: 4em 10em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.tag {
+    min-height: 132px;
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        margin: 2em 20px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    body {
+        margin: 1em 20px;
+    }
+}
