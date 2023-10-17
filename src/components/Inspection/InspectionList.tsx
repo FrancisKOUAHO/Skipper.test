@@ -1,6 +1,5 @@
 import {FunctionComponent, useEffect, useState} from 'react';
 import {buildUrl} from '../../utils/url.ts';
-import InspectionProps from "../../types/InspectionProps.ts";
 import Inspection from "./Inspection.tsx";
 
 interface EndpointProps {
@@ -8,7 +7,7 @@ interface EndpointProps {
 }
 
 const InspectionList: FunctionComponent<EndpointProps> = ({endpoint}) => {
-    const [inspections, setInspections] = useState<InspectionProps[]>([]);
+    const [inspections, setInspections] = useState([]);
     const [error, setError] = useState<string | null>(null);
 
     const fetchData = async () => {
