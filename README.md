@@ -1,3 +1,39 @@
+## Configuration du Projet
+
+Assurez-vous d'avoir Node.js installé. Si ce n'est pas le cas, téléchargez-le depuis [le site officiel](https://nodejs.org/).
+
+### Installation des Dépendances
+
+Exécutez la commande suivante pour installer les dépendances du projet :
+
+```sh
+yarn install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+yarn run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+yarn run test
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+yarn run lint
+```
+
 # Déploiement sur Vercel
 
 Ce guide explique comment déployer un fichier ou un projet sur la plateforme de déploiement Vercel.
@@ -39,4 +75,4 @@ Ce guide explique comment déployer un fichier ou un projet sur la plateforme de
    l'interface Vercel ou en modifiant le fichier de configuration (vercel.json).
 
 7. **Accès à votre déploiement** : Une fois le déploiement terminé, Vercel vous fournira une URL (par
-   exemple, https://nom-du-projet.vercel.app) où votre projet est accessible.# Skipper.test
+   exemple, https://skipper-test.vercel.app/) où votre projet est accessible.
