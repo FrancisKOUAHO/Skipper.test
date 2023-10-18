@@ -13,7 +13,7 @@ yarn install
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn run dev
 ```
 
 ### Type-Check, Compile and Minify for Production
