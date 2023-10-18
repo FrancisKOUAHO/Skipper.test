@@ -33,6 +33,11 @@ yarn run test
 ```sh
 yarn run lint
 ```
+## Bibliothèques Utilisées
+
+Ce projet utilise les bibliothèques suivantes :
+
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitaire.
 
 # Déploiement sur Vercel
 
