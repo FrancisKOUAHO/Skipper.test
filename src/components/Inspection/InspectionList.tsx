@@ -1,38 +1,14 @@
-import {FunctionComponent, useEffect, useState} from 'react';
-import {buildUrl} from '../../utils/url.ts';
-import Inspection from "./Inspection.tsx";
+import { FunctionComponent, useEffect, useState } from 'react';
+import Inspection from './Inspection.tsx';
+import InspectionData from '../../data/InspectionData.json';
+import {InspectionProps} from "../../types/InspectionProps.ts";
 
-interface EndpointProps {
-    endpoint: string;
-}
-
-const InspectionList: FunctionComponent<EndpointProps> = ({endpoint}) => {
-    const [inspections, setInspections] = useState([]);
-    const [error, setError] = useState<string | null>(null);
-
-    const fetchData = async () => {
-        try {
-            const response = await fetch(buildUrl(endpoint));
-
-            if (response.ok) {
-                const data = await response.json();
-                const mappedInspections = data.inspections;
-                setInspections(mappedInspections);
-            } else {
-                setError(`Error fetching data ${response.statusText}`);
-            }
-        } catch (error) {
-            setError(`Error fetching data: ${error}`);
-        }
-    };
+const InspectionList: FunctionComponent = () => {
+    const [inspections, setInspections] = useState<InspectionProps[]>([]);
 
     useEffect(() => {
-        fetchData();
-    }, [endpoint]);
-
-    if (error) {
-        return <div>{error}</div>;
-    }
+        setInspections(InspectionData.inspections);
+    }, []);
 
     return (
         <div className="container mt-14">
@@ -40,7 +16,7 @@ const InspectionList: FunctionComponent<EndpointProps> = ({endpoint}) => {
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 list-none">
                 {inspections.map((inspection, index) => (
                     <li key={index} className="bg-white rounded-xl shadow-md p-8">
-                        <Inspection data={inspection}/>
+                        <Inspection data={inspection} />
                     </li>
                 ))}
             </div>

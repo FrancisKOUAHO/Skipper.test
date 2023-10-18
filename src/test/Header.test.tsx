@@ -12,7 +12,6 @@ describe('Header Component', () => {
         expect(logoElement).toBeInTheDocument();
         expect(titleElement).toBeInTheDocument();
 
-        // You can also check for specific styles or classes if needed
         expect(headerElement).toHaveClass('sticky');
         expect(headerElement).toHaveClass('rounded-xl');
         expect(logoElement).toHaveAttribute('src', '/skipper.png');
@@ -29,6 +28,7 @@ describe('Header Component', () => {
         expect(logoElement).not.toBeInTheDocument();
         expect(titleElement).toBeInTheDocument();
 
+        // Vous pouvez également vérifier des styles ou des classes spécifiques si nécessaire
         expect(headerElement).toHaveClass('sticky');
         expect(headerElement).toHaveClass('rounded-xl');
         expect(titleElement).toHaveTextContent('Skipper NDT - Inspections');

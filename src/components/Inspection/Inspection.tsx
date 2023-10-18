@@ -1,7 +1,7 @@
 import {FunctionComponent} from "react";
-import InspectionProps from "../../types/InspectionProps.ts";
+import {InspectionProps} from "../../types/InspectionProps.ts";
 
-const Inspection: FunctionComponent<InspectionProps> = ({data}) => {
+const Inspection: FunctionComponent<{data?: InspectionProps}> = ({data}) => {
 
     if (!data) return <>Loading ...</>;
 

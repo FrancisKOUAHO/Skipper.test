@@ -1,50 +1,28 @@
-import { render, screen, waitFor } from '@testing-library/react';
-import { vi } from 'vitest'
-import InspectionList from "../components/Inspection/InspectionList.tsx";
+import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
+
+import InspectionList from '../components/Inspection/InspectionList.tsx';
+import InspectionData from '../data/InspectionData.json';
 
 describe('InspectionList Component', () => {
     it('renders loading message initially', () => {
-        render(<InspectionList endpoint="InspectionData" />);
+        render(<InspectionList />);
         const loadingElement = screen.getByText('Liste des Inspections');
         expect(loadingElement).toBeInTheDocument();
     });
 
-    it('renders inspections when data is loaded', async () => {
-        // Mock the API response with inspection data
-        global.fetch = vi.fn().mockResolvedValueOnce({
-            ok: true,
-            json: () => Promise.resolve({ inspections: [
-                {
-                    name: 'Inspection 1',
-                    installationType: 'Type A',
-                    constructionYear: 2020,
-                    company: 'ABC Inc.',
-                    type: 'Type X',
-                    diameter: 10,
-                    material: 'Metal',
-                    coating: 'Painted',
-                }
-                ] }),
-        });
-
-        render(<InspectionList endpoint="InspectionData" />);
-
-        await waitFor(() => {
-            const inspectionElement = screen.getByText('Inspection 1');
-            expect(inspectionElement).toBeInTheDocument();
-        });
+    it('renders inspections when data is loaded', () => {
+        render(<InspectionList />);
+        const inspectionElement = screen.getByText(InspectionData.inspections[0].name);
+        expect(inspectionElement).toBeInTheDocument();
     });
 
-    it('displays an error message on failed data fetch', async () => {
-        global.fetch = vi
-            .fn()
-            .mockResolvedValue({
-                ok: false,
-                statusText: 'Failed',
-            })
+    it('handles missing or incorrect data', () => {
+        const incorrectData: any[] = [];
+        vi.spyOn(InspectionData, 'inspections', 'get').mockReturnValue(incorrectData);
 
-        render(<InspectionList endpoint="InspectionData-zaae"/> );
-        const errorElement = await screen.findByText('Error fetching data Failed');
+        render(<InspectionList />);
+        const errorElement = screen.getByText('Liste des Inspections');
         expect(errorElement).toBeInTheDocument();
     });
 });
