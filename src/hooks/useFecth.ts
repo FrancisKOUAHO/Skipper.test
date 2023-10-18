@@ -10,6 +10,7 @@ const useFetch = <ResultType extends any>(
       .then((res) => res.json())
       .then((res) => {
         setData(formatResult(res));
+        console.log("res", res)
       });
   }, []);
 
