@@ -1,21 +1,20 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const useFetch = <ResultType extends any>(
-  url: string,
-  formatResult: (result: any) => ResultType
+    url: string,
+    formatResult: (result: any) => ResultType
 ) => {
-  const [data, setData] = useState<ResultType>();
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        setData(formatResult(res));
-        console.log("res", res)
-      });
-  }, []);
+    const [data, setData] = useState<ResultType>();
+    useEffect(() => {
+        axios.get(url)
+            .then((response) => {
+                setData(formatResult(response.data));
+            })
+    }, []);
 
-  return {
-    data,
-  };
+    return {
+        data,
+    };
 };
 export default useFetch;

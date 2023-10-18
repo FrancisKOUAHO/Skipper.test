@@ -1,3 +1,3 @@
 export const buildUrl = (endpoint: string) => {
-  return `data/${endpoint}/InspectionData.json`;
+  return `API/${endpoint}/InspectionData.json`;
 };

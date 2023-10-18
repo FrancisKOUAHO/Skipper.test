@@ -17,7 +17,6 @@ const InspectionList: FunctionComponent<EndpointProps> = ({endpoint}) => {
             if (response.ok) {
                 const data = await response.json();
                 const mappedInspections = data.inspections;
-                console.log("mappedInspections", mappedInspections)
                 setInspections(mappedInspections);
             } else {
                 setError(`Error fetching data ${response.statusText}`);
