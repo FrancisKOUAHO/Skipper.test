@@ -10,7 +10,7 @@ describe('InspectionList Component', () => {
     });
 
     it('renders inspections when data is loaded', async () => {
-        // Mock the API response with inspection data
+        // Mock the data response with inspection data
         global.fetch = vi.fn().mockResolvedValueOnce({
             ok: true,
             json: () => Promise.resolve({ inspections: [
